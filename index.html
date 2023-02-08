@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Health</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            max-width: 100vw;
+        }
+
+        html,
+        h3,
+        p {
+            margin: 0;
+            padding: 0;
+            font-family: "Josefin Sans", sans-serif;
+        }
+
+        body{
+            overflow-x: hidden;
+            overflow-y: hidden;
+            margin: 0;
+            padding: 0;
+            font-family: "Josefin Sans", sans-serif;
+            background-image: url('https://i.pinimg.com/originals/fa/c0/5c/fac05c110c458e9bab3a3248bfb3c376.jpg'), linear-gradient(rgb(219, 166, 166), rgb(0, 0, 172));
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .wrapper {
+            margin-top: -8vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            /* background-image: url('https://i.pinimg.com/originals/fa/c0/5c/fac05c110c458e9bab3a3248bfb3c376.jpg'), linear-gradient(rgb(219, 166, 166), rgb(0, 0, 172));
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover; */
+        }
+
+        .wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            display: inline-block;
+            border: 1px solid transparent;
+            padding: 3vw;
+            border-radius: 20px;
+            margin: 3vw;
+            height: 50vh;
+            width: 22vw;
+            backdrop-filter: blur(1px);
+            /* -webkit-backdrop-filter: blur(10px); */
+            background-color:rgb(0,0,0,0.4);
+            color: white;
+            /* background-blend-mode: color; */
+            text-align: center;
+        }
+
+        div,
+        p {
+            display: inline-block;
+        }
+
+        .yoyo {
+            margin-left: 11vw;
+            
+        }
+
+        .card:hover {
+            /* background-color: crimson; */
+            transition: all .7s;
+            transform: scale(1.25);
+            background-color:rgb(0,0,0,0.8);
+        }
+               .card:not(:hover) {
+            transition: all .5s ease-in-out;
+        }
+
+        .head {
+            font-size: 35px;
+            text-align: center;
+        }
+        .data{
+            margin-top: 10vh;
+            font-size: 100px;
+        }
+        nav{
+            /* margin-top: 50vh; */
+            backdrop-filter: blur(5px);
+            height: 12vh;
+            background-color:rgb(0,0,0,0.4);
+            color: white;
+        }
+        .navi li{
+            list-style: none;
+            display: inline-block;
+            padding: 2vh 4vw;
+            font-size: 18px;
+        }
+        #imp{
+            margin-right: 25vw;
+            font-size: 18px;
+        }
+        a{
+            color: white;
+        }
+    </style>
+
+</head>
+
+<body>
+    <nav>
+        <div class="navi">
+            <ul>
+            <li id="imp">Health Dashboard</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/medicine.html">Medicine</a></li>
+            <li><a href="/addMed.html">Add Medication</a></li>
+            <li></li>
+        </ul>
+        </div>
+    </nav>
+    <div class='wrapper'>
+        <div class="card yoyo">
+            <div class="head">Temperature</div>
+            <div class="data" id="temp">37.5</div>
+        </div>
+        <div class="card dapp">
+            <div class="head">Heart Rate</div>
+            <div class="data dodo" id="heart"></div>
+        </div>
+        <div class="card">
+            <div class="head">Fall Detected</div>
+            <div class="data" id="fall">NO</div>
+        </div>
+        
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-database.js"></script>
+    <script src="index.js"></script>
+    <!-- <script src="app.js"></script> -->
+</body>
+
+</html>

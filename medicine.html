@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines</title>
+    <link rel="stylesheet" href="medcs.css">
+</head>
+<body style=" background-image: url('https://i.pinimg.com/originals/fa/c0/5c/fac05c110c458e9bab3a3248bfb3c376.jpg'), linear-gradient(rgb(219, 166, 166), rgb(0, 0, 172));           background-position: center center;
+            background-repeat:repeat-y;
+            background-size: cover; height: 100vh;">
+                <nav>
+                    <div class="navi">
+                        <ul>
+                            <li id="imp">Medication Schedule</li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/medicine.html">Medicine</a></li>
+                            <li><a href="/addMed.html">Add Medication</a></li>
+                            <li></li>
+                        </ul>
+                    </div>
+                </nav>
+    
+    <table id="formDataTable">
+        <thead>
+            <tr>
+                <th>Medicine</th>
+                <th>Hours</th>
+                <th>Minutes</th>
+            </tr>
+        </thead>
+        <tbody id="formDataBody">
+        </tbody>
+    </table>
+    <button id="clr">Clear</button>
+    
+    <script>
+        var audio=new Audio('medicinealarm.mp3');
+        function renderFormData() {
+            let formData = localStorage.getItem("formData") || "[]";
+            formData = JSON.parse(formData);
+    
+            const formDataBody = document.getElementById("formDataBody");
+            formDataBody.innerHTML = "";
+            setInterval(() => {
+                var date=new Date();
+                console.log(date.getHours());
+                console.log(date.getMinutes());
+                console.log(formData.hours);
+                var final=Array.from(formData);
+                console.log(final);
+                final.forEach((ele)=>{
+
+                    if(ele.hours==date.getHours()&&ele.min==date.getMinutes()){
+                        audio.play();
+                    }
+                    else{
+                        audio.pause();
+                    }
+                })               
+            }, 5000);
+    
+    
+            formData.forEach(data => {
+                const row = document.createElement("tr");
+                const nameCell = document.createElement("td");
+                nameCell.innerText = data.name;
+                const emailCell = document.createElement("td");
+                emailCell.innerText = data.hours;
+                const emailCell2 = document.createElement("td");
+                emailCell2.innerText = data.min;
+                row.appendChild(nameCell);
+                row.appendChild(emailCell);
+                row.appendChild(emailCell2);
+                formDataBody.appendChild(row);
+            });
+        }
+    
+        renderFormData();
+        document.getElementById('clr').addEventListener('click',()=>{
+            localStorage.clear();
+        })
+    </script>
+</body>
+</html>

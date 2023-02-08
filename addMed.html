@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Medicines</title>
+    <link rel="stylesheet" href="addmedicinepage.css">
+</head>
+<body style=" background-image: url('https://i.pinimg.com/originals/fa/c0/5c/fac05c110c458e9bab3a3248bfb3c376.jpg'), linear-gradient(rgb(219, 166, 166), rgb(0, 0, 172));           background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover; height: 100vh;">
+            <nav>
+                <div class="navi">
+                    <ul>
+                        <li id="imp">Add Medicines</li>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/medicine.html">Medicine</a></li>
+                        <li><a href="/addMed.html">Add Medication</a></li>
+                        <li></li>
+                    </ul>
+                </div>
+            </nav>
+<form id="form">
+    <label for="name"></label>
+    <input type="text" id="name" name="name" placeholder="Medicine Name">
+
+    <label for="hours"></label>
+    <input type="text" id="hours" name="hours" placeholder="Hours">
+    <label for="min"></label>
+    <input type="text" id="min" name="min" placeholder="Minutes">
+
+    <input type="button" value="Submit" id="clr" onclick="submitForm()">
+</form>
+<!-- <a href="/medicine.html">medicine</a>   -->
+
+<script>
+function submitForm() {
+const form = document.getElementById("form");
+const name = form.elements.name.value;
+const hours = form.elements.hours.value;
+const min = form.elements.min.value;
+
+let formData = localStorage.getItem("formData") || "[]";
+formData = JSON.parse(formData);
+formData.push({ name,hours,min });
+localStorage.setItem("formData", JSON.stringify(formData));
+}
+</script>
+
+
+
+    
+</body>
+</html>
